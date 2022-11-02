@@ -7,11 +7,12 @@ namespace TrickOrTreat
     {
         private IEnumerable<Person> _people = new List<Person>();
         private DEAL _deal;
+        private IDealable _halloween;
 
         public void Init() {
             try
             {
-                ValidateNumber("¿1. Trick o 2. Trate?", (isNumber, option) => isNumber && option < 3 && option > 0, (option) =>
+                ValidateNumber("¿1. Trick, 2. Trate", (isNumber, option) => isNumber && option < 3 && option > 0, (option) =>
                 {
                     _deal = (DEAL)option;
                     AskNumberPeople();
@@ -40,22 +41,39 @@ namespace TrickOrTreat
         private void AskNumberPeople() {
             try
             {
-                ValidateNumber("Type number of people", (isNumber, option) => isNumber, (value) =>
-                {
-                    for (int i = 1; i <= value; i++)
+                ValidateNumber("What do you prefer, insert manually people or automatically? Manually(1)    Automtically(0)",
+                    (isNumber, option) => isNumber && option < 2, (value) =>
                     {
-                        Console.WriteLine($"Type name for the person {i}: ");
-                        string name = Console.ReadLine();
-                        int age = AskPersonPropertyNumber($"Type age for the person {i}: ");
-                        int height = AskPersonPropertyNumber($"Type higher for the person {i} in centimeters: ");
-                        _people = _people.Append(new Person(name, age, height));
-                    }
+                        ValidateNumber("Type number of people", (isNumber, option) => isNumber, (value) =>
+                        {
+                            _halloween = new Halloween(_deal);
 
-                    Console.OutputEncoding = Encoding.UTF8;
-                    IDealable halloween = new Halloween(_deal);
-                    string result = halloween.Deal(_people);
-                    Console.WriteLine(result);
-                });
+                            for (int i = 1; i <= value; i++)
+                            {
+                                string name = string.Empty;
+                                int age = 0;
+                                int height = 0;
+
+                                if (value == 1)
+                                {
+                                    Console.WriteLine($"Type name for the person {i}: ");
+                                    name = Console.ReadLine();
+                                    age = AskPersonPropertyNumber($"Type age for the person {i}: ");
+                                    height = AskPersonPropertyNumber($"Type higher for the person {i} in centimeters: ");
+                                }
+                                else
+                                {
+                                    name = Helper.RandomName();
+                                    age = Helper.RandomNumber(1, 99);
+                                    height = Helper.RandomNumber(30, 200);
+                                }
+
+                                _people = _people.Append(new Person(name, age, height));
+                            }
+
+                            Collect();
+                        });
+                    });
             }
             catch {
                 AskNumberPeople();
@@ -77,6 +95,15 @@ namespace TrickOrTreat
             }
 
             return age;
+        }
+
+        private void Collect() {
+            Console.OutputEncoding = Encoding.UTF8;
+            string result = _halloween.Deal(_people);
+            Console.WriteLine(result);
+            foreach (Person person in _people) {
+                Console.WriteLine(person);
+            }
         }
     }
 }

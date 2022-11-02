@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickOrTreat", "TrickOrTreat\TrickOrTreat.csproj", "{2D201232-5AF5-4032-9958-A012DB63F5AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickOrTreatLogic", "TrickOrTreatLogic\TrickOrTreatLogic.csproj", "{54B0DB90-5CCB-4CAD-B533-E0C1E3EA8E28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D201232-5AF5-4032-9958-A012DB63F5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D201232-5AF5-4032-9958-A012DB63F5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D201232-5AF5-4032-9958-A012DB63F5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D201232-5AF5-4032-9958-A012DB63F5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B0DB90-5CCB-4CAD-B533-E0C1E3EA8E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B0DB90-5CCB-4CAD-B533-E0C1E3EA8E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B0DB90-5CCB-4CAD-B533-E0C1E3EA8E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B0DB90-5CCB-4CAD-B533-E0C1E3EA8E28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C124748-8B11-492C-8B6A-6D61F7139CD5}
+	EndGlobalSection
+EndGlobal
